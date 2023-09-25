@@ -1,0 +1,30 @@
+to build the image cmd => docker build -t react-image
+------------------------------------
+remove the container :  docker rm react-container
+---------------------------------------
+know the running cointainer : docker ps
+----------------------------
+stop the cointainer : docker stop cointainer name 
+-------------------------------------------
+start the docker :  docker run --rm --name react-container -d -p 3000:3000 -v $(pwd):/app react-image
+
+The command you've provided is a Docker command used to run a container based on a Docker image for a React application. Let's break down the command step by step:
+
+docker run: This is the command to run a Docker container.
+
+--rm: This flag indicates that the container should be removed automatically when it stops running. This is useful for cleaning up containers that are no longer in use.
+
+--name react-container: This flag assigns a name to the container, in this case, "react-container." This name can be used to refer to the container in other Docker commands.
+
+-d: This flag runs the container in detached mode, meaning it runs in the background without attaching to your terminal. This is typical for long-running processes like web servers.
+
+-p 3000:3000: This flag maps port 3000 from the host machine to port 3000 inside the container. This is necessary because many React applications run a development server on port 3000 by default, and this flag allows you to access the application in your web browser.
+
+-v $(pwd):/app: This flag mounts a volume from the host machine to the /app directory inside the container. It uses the $(pwd) command substitution to get the current working directory on the host machine. This is a common practice for development to allow the container to 
+access and reflect changes made in the source code on your host machine. Changes made to files in the current directory on your host machine will be reflected in the /app directory within the container.
+
+react-image: This is the name of the Docker image that you're running in the container. Presumably, this image contains the necessary dependencies to run a React application.
+---------------------------------
+to check the past  logs :docker logs (cointainer hash) => docker logs 8c05029925b9
+to check the past and current  logs we use :docker logs (cointainer hash) => docker logs -f 8c05029925b9
+to get into the terminal:  docker exec -it 624e34060b8f /bin/bash
