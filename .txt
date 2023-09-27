@@ -1,4 +1,13 @@
-to build the image cmd => docker build -t react-image
+The command "sudo systemctl status docker" is used to check the status
+ of the Docker service on a Linux system
+ that uses systemd for managing services. This command will provide 
+information about whether the Docker service is currently running, 
+its active state, and some recent log entries.
+sudo systemctl start docker
+sudo systemctl status docker
+----------------------------------------------------------
+to build the image cmd => docker build -t backend-image . 
+or docker build -t backend-image ./app
 ------------------------------------
 remove the container :  docker rm react-container
 ---------------------------------------
@@ -28,3 +37,8 @@ react-image: This is the name of the Docker image that you're running in the con
 to check the past  logs :docker logs (cointainer hash) => docker logs 8c05029925b9
 to check the past and current  logs we use :docker logs (cointainer hash) => docker logs -f 8c05029925b9
 to get into the terminal:  docker exec -it 624e34060b8f /bin/bash
+
+to remove the image : docker rmi -f imageName 
+
+Run the following command to remove Docker container:
+ docker stop <Container_ID> docker rm <Container_ID> 
